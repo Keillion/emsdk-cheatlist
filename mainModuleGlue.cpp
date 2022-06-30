@@ -2,6 +2,7 @@
 #include <emscripten.h>
 #include "EM_array_bounds_check_error.h"
 
+extern "C" {
 // Not using size_t for array indices as the values used by the javascript code are signed.
 
 //EM_JS(void, array_bounds_check_error, (size_t idx, size_t size), {
@@ -32,5 +33,7 @@ char* EMSCRIPTEN_KEEPALIVE emscripten_bind_MainModule_getInfo_0(MainModule* self
 
 void EMSCRIPTEN_KEEPALIVE emscripten_bind_MainModule___destroy___0(MainModule* self) {
   delete self;
+}
+
 }
 

@@ -9,7 +9,7 @@ Use cmake + [emsdk](https://emscripten.org/index.html) to build multiple wasm in
 
 mainModule -> sideModule -> cModule
 
-mainModule offers STL.
+mainModule offers system libraries.
 
 sideModule offers Class SideModule needed by cModule.
 

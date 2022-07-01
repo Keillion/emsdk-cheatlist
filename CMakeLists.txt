@@ -41,8 +41,8 @@ set(CMAKE_EXE_LINKER_FLAGS "-Oz -s DISABLE_EXCEPTION_CATCHING=1 ${CMAKE_EXE_LINK
 
 # https://emscripten.org/docs/compiling/Dynamic-Linking.html
 
-add_executable(baseModule EM_array_bounds_check_error.cpp)
-set_target_properties(baseModule PROPERTIES COMPILE_FLAGS " -s MAIN_MODULE=2 -fPIC" LINK_FLAGS " -s MAIN_MODULE=2 -fPIC -s ERROR_ON_UNDEFINED_SYMBOLS=0 --post-js ../cModuleGlue.js sideModule.wasm cModule.wasm")
+add_executable(mainModule EM_array_bounds_check_error.cpp)
+set_target_properties(mainModule PROPERTIES COMPILE_FLAGS " -s MAIN_MODULE=2 -fPIC" LINK_FLAGS " -s MAIN_MODULE=2 -fPIC -s ERROR_ON_UNDEFINED_SYMBOLS=0 --post-js ../cModuleGlue.js sideModule.wasm cModule.wasm")
 
 # add the executable for cModule
 add_executable(cModule cModule.cpp)
@@ -57,9 +57,9 @@ add_executable(sideModule sideModule.cpp)
 # use -v to get more info about `including lib[...]` messages
 set_target_properties(sideModule PROPERTIES COMPILE_FLAGS " -s SIDE_MODULE=1 -fPIC" LINK_FLAGS " -s SIDE_MODULE=1 -fPIC -s EXPORT_ALL=1" SUFFIX ".wasm") # cModule.wasm
 
-#add_executable(baseModule baseModule.cpp)
-#set_target_properties(baseModule PROPERTIES COMPILE_FLAGS " -s MAIN_MODULE=2 -fPIC -s ERROR_ON_UNDEFINED_SYMBOLS=0" LINK_FLAGS " -s MAIN_MODULE=2 -fPIC -s ERROR_ON_UNDEFINED_SYMBOLS=0 --post-js cModuleGlue.js sideModule.wasm cModule.wasm")
+#add_executable(mainModule mainModule.cpp)
+#set_target_properties(mainModule PROPERTIES COMPILE_FLAGS " -s MAIN_MODULE=2 -fPIC -s ERROR_ON_UNDEFINED_SYMBOLS=0" LINK_FLAGS " -s MAIN_MODULE=2 -fPIC -s ERROR_ON_UNDEFINED_SYMBOLS=0 --post-js cModuleGlue.js sideModule.wasm cModule.wasm")
 
-add_dependencies(baseModule sideModule cModule)
+add_dependencies(mainModule sideModule cModule)
 add_dependencies(sideModule cModule)
 

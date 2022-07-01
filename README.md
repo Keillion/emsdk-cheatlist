@@ -7,6 +7,14 @@ Use cmake + [emsdk](https://emscripten.org/index.html) to build multiple wasm in
 
 ## Class CModule
 
+mainModule -> sideModule -> cModule
+
+mainModule offers STL.
+
+sideModule offers Class SideModule needed by cModule.
+
+cModule offers exported js API.
+
 [Dynamic link](https://github.com/emscripten-core/emscripten/wiki/Linking) sideModule.
 
 Use [webidl](https://emscripten.org/docs/porting/connecting_cpp_and_javascript/WebIDL-Binder.html).

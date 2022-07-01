@@ -4,16 +4,8 @@ Use cmake + [emsdk](https://emscripten.org/index.html) to build multiple wasm in
 
 
 
-## Class A
 
-Use [embind](https://emscripten.org/docs/porting/connecting_cpp_and_javascript/embind.html).
-
-Test: `testA.html`
-
-
-
-
-## Class MainModule
+## Class CModule
 
 [Dynamic link](https://github.com/emscripten-core/emscripten/wiki/Linking) sideModule.
 

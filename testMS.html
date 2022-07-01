@@ -6,12 +6,17 @@
 <body>
 <script>
 var Module = {};
-Module.dynamicLibraries = ['sideModule.wasm'];
+Module.dynamicLibraries = ['sideModule.wasm','cModule.wasm'];
 Module.onRuntimeInitialized = function(){
-  var myMainModule = new MainModule("zzz","20200201");
-  console.log(myMainModule.getInfo());
+  for(let field in Module){
+    if(field.startsWith('_emscripten_') && Module.hasOwnProperty(field) && !self.hasOwnProperty(field)){
+      self[field] = Module[field];
+    }
+  }
+  var myCModule = new CModule("zzz","20200201");
+  console.log(myCModule.getInfo());
 };
 </script>
-<script src="./mainModule.js"></script>
+<script src="./baseModule.js"></script>
 </body>
 </html>

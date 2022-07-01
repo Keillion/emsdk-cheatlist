@@ -1,0 +1,4 @@
+interface CModule{
+  void CModule(DOMString name, DOMString birthday);
+  DOMString getInfo();
+};

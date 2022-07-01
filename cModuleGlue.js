@@ -197,28 +197,28 @@ Module['VoidPtr'] = VoidPtr;
   var self = this.ptr;
   _emscripten_bind_VoidPtr___destroy___0(self);
 };
-// MainModule
-/** @suppress {undefinedVars, duplicate} @this{Object} */function MainModule(name, birthday) {
+// CModule
+/** @suppress {undefinedVars, duplicate} @this{Object} */function CModule(name, birthday) {
   ensureCache.prepare();
   if (name && typeof name === 'object') name = name.ptr;
   else name = ensureString(name);
   if (birthday && typeof birthday === 'object') birthday = birthday.ptr;
   else birthday = ensureString(birthday);
-  this.ptr = _emscripten_bind_MainModule_MainModule_2(name, birthday);
-  getCache(MainModule)[this.ptr] = this;
+  this.ptr = _emscripten_bind_CModule_CModule_2(name, birthday);
+  getCache(CModule)[this.ptr] = this;
 };;
-MainModule.prototype = Object.create(WrapperObject.prototype);
-MainModule.prototype.constructor = MainModule;
-MainModule.prototype.__class__ = MainModule;
-MainModule.__cache__ = {};
-Module['MainModule'] = MainModule;
+CModule.prototype = Object.create(WrapperObject.prototype);
+CModule.prototype.constructor = CModule;
+CModule.prototype.__class__ = CModule;
+CModule.__cache__ = {};
+Module['CModule'] = CModule;
 
-MainModule.prototype['getInfo'] = MainModule.prototype.getInfo = /** @suppress {undefinedVars, duplicate} @this{Object} */function() {
+CModule.prototype['getInfo'] = CModule.prototype.getInfo = /** @suppress {undefinedVars, duplicate} @this{Object} */function() {
   var self = this.ptr;
-  return UTF8ToString(_emscripten_bind_MainModule_getInfo_0(self));
+  return UTF8ToString(_emscripten_bind_CModule_getInfo_0(self));
 };;
 
-  MainModule.prototype['__destroy__'] = MainModule.prototype.__destroy__ = /** @suppress {undefinedVars, duplicate} @this{Object} */function() {
+  CModule.prototype['__destroy__'] = CModule.prototype.__destroy__ = /** @suppress {undefinedVars, duplicate} @this{Object} */function() {
   var self = this.ptr;
-  _emscripten_bind_MainModule___destroy___0(self);
+  _emscripten_bind_CModule___destroy___0(self);
 };

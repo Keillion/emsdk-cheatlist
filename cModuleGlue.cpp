@@ -21,17 +21,17 @@ void EMSCRIPTEN_KEEPALIVE emscripten_bind_VoidPtr___destroy___0(void** self) {
   delete self;
 }
 
-// MainModule
+// CModule
 
-MainModule* EMSCRIPTEN_KEEPALIVE emscripten_bind_MainModule_MainModule_2(char* name, char* birthday) {
-  return new MainModule(name, birthday);
+CModule* EMSCRIPTEN_KEEPALIVE emscripten_bind_CModule_CModule_2(char* name, char* birthday) {
+  return new CModule(name, birthday);
 }
 
-char* EMSCRIPTEN_KEEPALIVE emscripten_bind_MainModule_getInfo_0(MainModule* self) {
+char* EMSCRIPTEN_KEEPALIVE emscripten_bind_CModule_getInfo_0(CModule* self) {
   return self->getInfo();
 }
 
-void EMSCRIPTEN_KEEPALIVE emscripten_bind_MainModule___destroy___0(MainModule* self) {
+void EMSCRIPTEN_KEEPALIVE emscripten_bind_CModule___destroy___0(CModule* self) {
   delete self;
 }
 

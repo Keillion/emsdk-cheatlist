@@ -4,15 +4,15 @@
 #include <string>
 #include "sideModule.h"
 
-//class MainModule;
+//class CModule;
 //{
 using namespace std;
 
-class MainModule{
+class CModule{
 public:
   string name;
   string birthday;
-  MainModule(const char* name, const char* birthday);
+  CModule(const char* name, const char* birthday);
   char* getInfo();
 };
 

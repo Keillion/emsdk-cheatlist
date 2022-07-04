@@ -37,11 +37,12 @@ set(CMAKE_EXE_LINKER_FLAGS "-Oz -s DISABLE_EXCEPTION_CATCHING=1 ${CMAKE_EXE_LINK
 # https://emscripten.org/docs/compiling/Dynamic-Linking.html
 
 add_executable(mainModule EM_array_bounds_check_error.cpp)
-set_target_properties(mainModule PROPERTIES COMPILE_FLAGS " -s MAIN_MODULE=2 -fPIC" LINK_FLAGS " -s MAIN_MODULE=2 -fPIC -s ERROR_ON_UNDEFINED_SYMBOLS=0 --post-js ../cModuleGlue.js sideModule.wasm cModule.wasm")
+set_target_properties(mainModule PROPERTIES COMPILE_FLAGS " -s MAIN_MODULE=2 -fPIC" LINK_FLAGS " -s MAIN_MODULE=2 -fPIC -s ERROR_ON_UNDEFINED_SYMBOLS=0 --post-js ../cModuleGlue.js sideModule.wasm cModule.wasm -L.")
 
 # add the executable for sideModule
 add_executable(sideModule sideModule.cpp)
-set_target_properties(sideModule PROPERTIES COMPILE_FLAGS " -s SIDE_MODULE=1 -fPIC" LINK_FLAGS " -s SIDE_MODULE=1 -fPIC -s EXPORT_ALL=1" SUFFIX ".wasm") # cModule.wasm
+set_target_properties(sideModule PROPERTIES COMPILE_FLAGS " -s SIDE_MODULE=2 -fPIC" LINK_FLAGS " -s SIDE_MODULE=2 -fPIC cModule.wasm" SUFFIX ".wasm") # cModule.wasm
+#target_link_libraries(sideModule cModule)
 
 
 # add the executable for cModule

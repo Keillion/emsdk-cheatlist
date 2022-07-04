@@ -3,6 +3,9 @@
 Use cmake + [emsdk](https://emscripten.org/index.html) to build multiple wasm in one time.
 
 
+# Modify emcc.py
+
+https://github.com/Keillion/emscripten/commit/fc55d8790a55fe3b8976a542e1bde47a5295d103
 
 
 ## Class CModule

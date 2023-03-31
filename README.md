@@ -2,32 +2,26 @@
 
 Use cmake + [emsdk](https://emscripten.org/index.html) to build multiple wasm in one time.
 
+Prepare: emscripten 3.1.30
 
-
-## Class A
-
-Use [embind](https://emscripten.org/docs/porting/connecting_cpp_and_javascript/embind.html).
-
-Test: `testA.html`
-
-
-
-
-## Class MainModule
+modify emcc.py: https://github.com/Keillion/emscripten/commit/fc55d8790a55fe3b8976a542e1bde47a5295d103
 
 [Dynamic link](https://emscripten.org/docs/compiling/Dynamic-Linking.html) sideModule.
 
 Use [webidl](https://emscripten.org/docs/porting/connecting_cpp_and_javascript/WebIDL-Binder.html).
 
-Test: `testMS.html`
+Generate idl cpp and js for reference
+```shell
+$ /emsdk/upstream/emscripten/tools/webidl_binder mainModule.idl mainModuleGlue
+```
 
 
 
 ## How to Build
-
 ```shell
-$ ~/emsdk/upstream/emscripten/tools/webidl_binder mainModule.idl mainModuleGlue
-$ emcmake cmake .
+$ mkdir build
+$ cd build
+$ emcmake cmake ../
 $ emmake make
 ``` 
 
@@ -43,6 +37,6 @@ $ emmake make VERBOSE=1
 
 
 
-## Todo
+## Free memery
 
-Test if `char *` in webidl has memory leak.
+Not freeing `char *` return value in webidl will cause a memory leak.

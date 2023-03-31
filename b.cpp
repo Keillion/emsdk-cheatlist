@@ -1,26 +1,28 @@
-#include "a.h"
+#include "b.h"
 
+//#include <cstdio>
 #include <emscripten/emscripten.h>
+#include "a.h"
+#include "c.h"
 
-#include "EM_array_bounds_check_error.h"
+// #include "EM_array_bounds_check_error.h"
 
 // #include "opencv2/dnn.hpp"
 // using namespace cv;
 // using namespace dnn;
 
-#include <cstdio>
-//#include "c.h"
-
-void aPrint(){
-    emscripten_log(EM_LOG_CONSOLE, "print a\n");
-    printf("Test if printf works");
-    //cPrint();
+void bPrint(){
+    //printf("print b\n");
+    emscripten_log(EM_LOG_CONSOLE, "print b\n");
+    cPrint();
 }
 
-// int main(){
-//     aPrint();
-// }
-
+int main(){
+    //printf("print main\n");
+    emscripten_log(EM_LOG_CONSOLE, "print main\n");
+    aPrint();
+    bPrint();
+}
 
 // Net myNet;
 
@@ -31,6 +33,3 @@ void aPrint(){
 // }
 
 // }
-
-
-

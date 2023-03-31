@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <input id="ipt-proto" type="file">
+  <input id="ipt-model" type="file">
+    <script>
+    // var Module = {};
+    // Module.dynamicLibraries = ['b.wasm'];
+    // Module.onRuntimeInitialized = function(){
+    //   for(let field in Module){
+    //     if(field.startsWith('_emscripten_') && Module.hasOwnProperty(field) && !self.hasOwnProperty(field)){
+    //       self[field] = Module[field];
+    //     }
+    //   }
+    // };
+    </script>
+    <script src="./a.js"></script>
+    <script>
+      const buffersInWasm = [];
+      const setBufferIntoWasm = (data, idx, start, end) => {
+          if(start){
+              data = end ? data.subarray(start,end) : data.subarray(start);
+          }
+          let bf = buffersInWasm[idx] = buffersInWasm[idx] || { ptr:0, size:0, maxSize:0 };
+          if(data.length > bf.maxSize){
+              if(bf.ptr){ Module._free(bf.ptr); }
+              bf.ptr = Module._malloc(data.length);
+              bf.maxSize = data.length;
+          }
+          Module.HEAPU8.set(data, bf.ptr);
+          bf.size = data.length;
+          return bf.ptr;
+      };
+      document.getElementById('ipt-proto').addEventListener('change', async function(){
+        let file = this.files[0];
+        let buffer = await file.arrayBuffer();
+        setBufferIntoWasm(buffer,0);
+      });
+      document.getElementById('ipt-model').addEventListener('change', async function(){
+        let file = this.files[0];
+        let buffer = await file.arrayBuffer();
+        setBufferIntoWasm(buffer,1);
+      });
+    </script>
+</body>
+</html>

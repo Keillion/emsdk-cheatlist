@@ -40,3 +40,10 @@ $ emmake make VERBOSE=1
 ## Free memery
 
 Not freeing `char *` return value in webidl will cause a memory leak.
+
+====
+
+## std.js
+
+Most fileds in wasmImport or wasmExport are not needed, I save a slimmed std.js here for reference.
+
